@@ -16,21 +16,23 @@
     ]
   },
   "Ms Stevenson (Honors English 2)": {
-    "response_count": 3,
+    "response_count": 4,
     "averages": {
-      "difficulty": 4.67,
-      "enjoyment": 2.67,
-      "strictness": 4.33
+      "difficulty": 4.5,
+      "enjoyment": 2.75,
+      "strictness": 4.0
     },
-    "would_take_again_percent_yes": 33.3,
+    "would_take_again_percent_yes": 25.0,
     "average_grade": "B-",
     "comments": [
       "Good teacher, but extremely difficult class. Very harsh essay grading.",
-      "First semester there is like no homework, but the median essay grade on the first 2 essays was like a 60"
+      "First semester there is like no homework, but the median essay grade on the first 2 essays was like a 60",
+      "She's a super hard grader when it comes to essays"
     ],
     "methods_to_pass": [
       "Go to office hours.",
-      "Spend a lot of time on ur essay and go to office hours"
+      "Spend a lot of time on ur essay and go to office hours",
+      "Go to office hours when you can and get on her good side"
     ]
   },
   "Mr Shelton (Religious Studies 2 Sacred Text)": {
@@ -52,19 +54,21 @@
     ]
   },
   "Mr Anderson (Honors English 1)": {
-    "response_count": 1,
+    "response_count": 2,
     "averages": {
       "difficulty": 3.0,
-      "enjoyment": 2.0,
-      "strictness": 4.0
+      "enjoyment": 3.0,
+      "strictness": 3.5
     },
     "would_take_again_percent_yes": 100.0,
-    "average_grade": "A",
+    "average_grade": "B+",
     "comments": [
-      "Don’t play video games"
+      "Don’t play video games",
+      "Do not play games, do your membrane."
     ],
     "methods_to_pass": [
-      "Actually read and do the work"
+      "Actually read and do the work",
+      "Just pay attention to what he talks about in class."
     ]
   },
   "Mr Hirsch (Algebra 2 Trigonometry Honors)": {
@@ -113,7 +117,7 @@
       "DO WELL ON HW, and u can tank literally anything bc of extra credit."
     ]
   },
-  "Mr Van Bomel (World History Honors)": {
+  "Mr Van Bomel (World History)": {
     "response_count": 1,
     "averages": {
       "difficulty": 1.0,
@@ -129,7 +133,7 @@
       "U can literally miss all of class, and just study the review sheet in ur own, and get an A on the final"
     ]
   },
-  "Mrs Davisson (Freshman Stem)": {
+  "Mrs Davisson (Stem)": {
     "response_count": 1,
     "averages": {
       "difficulty": 2.0,
@@ -144,11 +148,11 @@
     ]
   },
   "Mr Padia (Ap Bio)": {
-    "response_count": 1,
+    "response_count": 2,
     "averages": {
-      "difficulty": 5.0,
-      "enjoyment": 1.0,
-      "strictness": 1.0
+      "difficulty": 4.0,
+      "enjoyment": 3.0,
+      "strictness": 1.5
     },
     "would_take_again_percent_yes": 100.0,
     "average_grade": "A",
@@ -156,7 +160,8 @@
       "Content is hard. Only take if you actually like science."
     ],
     "methods_to_pass": [
-      "Study a lot, find what works best for you."
+      "Study a lot, find what works best for you.",
+      "Do the packet for the homework and do notes in class so by the end of the chapter, you did everything provided rather than sitting in class adding no new notes"
     ]
   },
   "Mr Bedford (Introduction To Computer Science)": {
@@ -214,6 +219,65 @@
     "average_grade": "A",
     "comments": [],
     "methods_to_pass": []
+  },
+  "Mr Thompson (Engineering And Fabrication 1)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 2.0,
+      "enjoyment": 5.0,
+      "strictness": 4.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
+    "comments": [
+      "The hardest part is the write up after your projects, however if you love engineering you'll love this class."
+    ],
+    "methods_to_pass": []
+  },
+  "Mr Marchesci (Latin 2)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 3.0,
+      "enjoyment": 1.0,
+      "strictness": 4.0
+    },
+    "would_take_again_percent_yes": 0.0,
+    "average_grade": "A-",
+    "comments": [
+      "An obscene amount of homework. 40 word vocab quizzes weekly as well."
+    ],
+    "methods_to_pass": [
+      "Firstly, drop the class. But if its too late to do that, study your vocab and everything else you can do in class."
+    ]
+  },
+  "Mrs Marnell (Ap Calc Ab)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 4.0,
+      "enjoyment": 2.0,
+      "strictness": 2.0
+    },
+    "would_take_again_percent_yes": 0.0,
+    "average_grade": "A-",
+    "comments": [
+      "Talks about her personal problems a lot"
+    ],
+    "methods_to_pass": []
+  },
+  "Mr Thompson (Sculpture 12)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 3.0,
+      "enjoyment": 5.0,
+      "strictness": 2.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
+    "comments": [
+      "Don't be dumb"
+    ],
+    "methods_to_pass": [
+      "Put effort into what you do"
+    ]
   }
 }
-
