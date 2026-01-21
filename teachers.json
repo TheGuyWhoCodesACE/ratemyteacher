@@ -14,5 +14,37 @@
     "methods_to_pass": [
       "He checks your collar and will send you to the Deans if you don't have a collared shirt."
     ]
+  },
+  "Ms Stevenson (Honors English 2)": {
+    "response_count": 2,
+    "averages": {
+      "difficulty": 5.0,
+      "enjoyment": 2.5,
+      "strictness": 4.0
+    },
+    "would_take_again_percent_yes": 0.0,
+    "average_grade": "C+",
+    "comments": [
+      "Good teacher, but extremely difficult class. Very harsh essay grading."
+    ],
+    "methods_to_pass": [
+      "Go to office hours."
+    ]
+  },
+  "Mr Shelton (Religious Studies Ii Sacred Text)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 1.0,
+      "enjoyment": 5.0,
+      "strictness": 1.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
+    "comments": [
+      "ez pz"
+    ],
+    "methods_to_pass": [
+      "clash royale (im deadass)"
+    ]
   }
 }
