@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rate My Teachers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
+    }
+
+    .teacher-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .teacher-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.2s;
+    }
+
+    .teacher-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .teacher-card h2 {
+      margin-top: 0;
+      color: #34495e;
+    }
+
+    .stat {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .section {
+      margin-top: 10px;
+    }
+
+    .section h3 {
+      margin: 10px 0 5px 0;
+      font-size: 1rem;
+      color: #2c3e50;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 5px 0;
+    }
+
+    .rating-bar {
+      height: 10px;
+      background: #ddd;
+      border-radius: 5px;
+      margin-top: 3px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .rating-fill {
+      height: 100%;
+      background: #3498db;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Rate My Teachers</h1>
+  <div class="teacher-container" id="teacherContainer"></div>
+
+  <script>
+    async function loadTeachers() {
+      try {
+        const res = await fetch('teachers.json');
+        const data = await res.json();
+        const container = document.getElementById('teacherContainer');
+
+        for (const [name, info] of Object.entries(data)) {
+          const card = document.createElement('div');
+          card.className = 'teacher-card';
+
+          card.innerHTML = `
+            <h2>${name}</h2>
+            <p><span class="stat">Responses:</span> ${info.response_count}</p>
+            
+            <div class="section">
+              <h3>Averages</h3>
+              <p>Difficulty: ${info.averages.difficulty}</p>
+              <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.difficulty/5)*100}%"></div></div>
+              
+              <p>Enjoyment: ${info.averages.enjoyment}</p>
+              <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.enjoyment/5)*100}%"></div></div>
+              
+              <p>Strictness: ${info.averages.strictness}</p>
+              <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.strictness/5)*100}%"></div></div>
+              
+              <p><span class="stat">% Would take again:</span> ${info.would_take_again_percent_yes}%</p>
+            </div>
+
+            <div class="section">
+              <h3>Comments</h3>
+              <ul>${info.comments.map(c => `<li>${c}</li>`).join('')}</ul>
+            </div>
+
+            <div class="section">
+              <h3>Methods to Pass</h3>
+              <ul>${info.methods_to_pass.map(m => `<li>${m}</li>`).join('')}</ul>
+            </div>
+          `;
+
+          container.appendChild(card);
+        }
+
+      } catch (err) {
+        console.error("Error loading teachers.json:", err);
+        document.getElementById('teacherContainer').innerHTML = "<p>Could not load teacher data.</p>";
+      }
+    }
+
+    loadTeachers();
+  </script>
+
+</body>
+</html>

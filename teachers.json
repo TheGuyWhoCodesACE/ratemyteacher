@@ -1,0 +1,17 @@
+{
+  "Mr Norris": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 2.0,
+      "enjoyment": 1.0,
+      "strictness": 1.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "comments": [
+      "The class is really boring, however decently easy if you manage to pay attention."
+    ],
+    "methods_to_pass": [
+      "He checks if you're wearing a collared shirt so don't try to get by him if you have his class."
+    ]
+  }
+}
