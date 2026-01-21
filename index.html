@@ -167,7 +167,6 @@
       width: 100%;
       border: 1px solid #ecf0f1;
       position: relative;
-      overflow: hidden;
     }
 
     .teacher-card::before {
@@ -416,14 +415,19 @@
       const loading = container.querySelector('.loading');
 
       try {
+        console.log('Fetching teachers.json...');
         const res = await fetch('teachers.json');
+        if (!res.ok) throw new Error('Failed to fetch teachers.json');
         const data = await res.json();
+        console.log('Data loaded:', data);
 
         // Remove loading
         container.innerHTML = '';
 
         for (const [name, info] of Object.entries(data)) {
-          // Only teacher name for image
+          console.log('Creating card for:', name);
+
+          // Image handling
           const baseName = name.split("(")[0].trim().toLowerCase().replace(/[^a-z0-9]/g, '');
           const imageExtensions = ['png', 'jpg', 'jpeg', 'webp'];
           let imageSrc = 'placeholder.png';
@@ -439,70 +443,123 @@
             } catch(e) {}
           }
 
+          // Create card
           const card = document.createElement('div');
           card.className = 'teacher-card';
 
-          card.innerHTML = `
-            <img src="${imageSrc}" alt="${name}" class="teacher-image" loading="lazy">
-            <h2>${name}</h2>
-            <p><span class="stat">Responses:</span> ${info.response_count}</p>
-            <p><span class="stat">% Would take again:</span> ${info.would_take_again_percent_yes}%</p>
+          // Image
+          const img = document.createElement('img');
+          img.src = imageSrc;
+          img.alt = name;
+          img.className = 'teacher-image';
+          img.loading = 'lazy';
+          card.appendChild(img);
 
-            <div class="rating-container">
-              <div class="rating-label">Difficulty</div>
-              <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.difficulty/5)*100}%"></div><div class="rating-value">${info.averages.difficulty} / 5</div></div>
+          // Name
+          const h2 = document.createElement('h2');
+          h2.textContent = name;
+          card.appendChild(h2);
 
-              <div class="rating-label">Enjoyment</div>
-              <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.enjoyment/5)*100}%"></div><div class="rating-value">${info.averages.enjoyment} / 5</div></div>
+          // Responses
+          const p1 = document.createElement('p');
+          p1.innerHTML = `<span class="stat">Responses:</span> ${info.response_count}`;
+          card.appendChild(p1);
 
-              <div class="rating-label">Strictness</div>
-              <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.strictness/5)*100}%"></div><div class="rating-value">${info.averages.strictness} / 5</div></div>
-            </div>
+          // Would take again
+          const p2 = document.createElement('p');
+          p2.innerHTML = `<span class="stat">% Would take again:</span> ${info.would_take_again_percent_yes}%`;
+          card.appendChild(p2);
 
-            <div class="average-grade">Average Grade: ${info.average_grade}</div>
+          // Rating container
+          const ratingContainer = document.createElement('div');
+          ratingContainer.className = 'rating-container';
 
-            <button type="button" class="collapsible">Comments</button>
-            <div class="content"><ul>${info.comments.map(c => `<li>${c}</li>`).join('')}</ul></div>
+          // Difficulty
+          const diffLabel = document.createElement('div');
+          diffLabel.className = 'rating-label';
+          diffLabel.textContent = 'Difficulty';
+          ratingContainer.appendChild(diffLabel);
 
-            <button type="button" class="collapsible">Methods to Pass</button>
-            <div class="content"><ul>${info.methods_to_pass.map(m => `<li>${m}</li>`).join('')}</ul></div>
-          `;
+          const diffBar = document.createElement('div');
+          diffBar.className = 'rating-bar';
+          const diffFill = document.createElement('div');
+          diffFill.className = 'rating-fill';
+          diffFill.style.width = `${(info.averages.difficulty / 5) * 100}%`;
+          const diffValue = document.createElement('div');
+          diffValue.className = 'rating-value';
+          diffValue.textContent = `${info.averages.difficulty} / 5`;
+          diffBar.appendChild(diffFill);
+          diffBar.appendChild(diffValue);
+          ratingContainer.appendChild(diffBar);
 
-          container.appendChild(card);
-        }
+          // Enjoyment
+          const enjoyLabel = document.createElement('div');
+          enjoyLabel.className = 'rating-label';
+          enjoyLabel.textContent = 'Enjoyment';
+          ratingContainer.appendChild(enjoyLabel);
 
-        // Collapsible functionality
-        const coll = document.getElementsByClassName("collapsible");
-        for (let i = 0; i < coll.length; i++) {
-          coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            const content = this.nextElementSibling;
-            if (content.style.maxHeight) {
-              content.style.maxHeight = null;
-            } else {
-              content.style.maxHeight = content.scrollHeight + "px";
-            }
+          const enjoyBar = document.createElement('div');
+          enjoyBar.className = 'rating-bar';
+          const enjoyFill = document.createElement('div');
+          enjoyFill.className = 'rating-fill';
+          enjoyFill.style.width = `${(info.averages.enjoyment / 5) * 100}%`;
+          const enjoyValue = document.createElement('div');
+          enjoyValue.className = 'rating-value';
+          enjoyValue.textContent = `${info.averages.enjoyment} / 5`;
+          enjoyBar.appendChild(enjoyFill);
+          enjoyBar.appendChild(enjoyValue);
+          ratingContainer.appendChild(enjoyBar);
+
+          // Strictness
+          const strictLabel = document.createElement('div');
+          strictLabel.className = 'rating-label';
+          strictLabel.textContent = 'Strictness';
+          ratingContainer.appendChild(strictLabel);
+
+          const strictBar = document.createElement('div');
+          strictBar.className = 'rating-bar';
+          const strictFill = document.createElement('div');
+          strictFill.className = 'rating-fill';
+          strictFill.style.width = `${(info.averages.strictness / 5) * 100}%`;
+          const strictValue = document.createElement('div');
+          strictValue.className = 'rating-value';
+          strictValue.textContent = `${info.averages.strictness} / 5`;
+          strictBar.appendChild(strictFill);
+          strictBar.appendChild(strictValue);
+          ratingContainer.appendChild(strictBar);
+
+          card.appendChild(ratingContainer);
+
+          // Average grade
+          const avgGrade = document.createElement('div');
+          avgGrade.className = 'average-grade';
+          avgGrade.textContent = `Average Grade: ${info.average_grade}`;
+          card.appendChild(avgGrade);
+
+          // Comments collapsible
+          const commentsBtn = document.createElement('button');
+          commentsBtn.type = 'button';
+          commentsBtn.className = 'collapsible';
+          commentsBtn.textContent = 'Comments';
+          card.appendChild(commentsBtn);
+
+          const commentsContent = document.createElement('div');
+          commentsContent.className = 'content';
+          const commentsUl = document.createElement('ul');
+          info.comments.forEach(c => {
+            const li = document.createElement('li');
+            li.textContent = c;
+            commentsUl.appendChild(li);
           });
-        }
+          commentsContent.appendChild(commentsUl);
+          card.appendChild(commentsContent);
 
-        // Search filter
-        const searchInput = document.getElementById('searchInput');
-        searchInput.addEventListener('input', () => {
-          const query = searchInput.value.toLowerCase();
-          const cards = container.getElementsByClassName('teacher-card');
-          Array.from(cards).forEach(card => {
-            const name = card.querySelector('h2').textContent.toLowerCase();
-            card.style.display = name.includes(query) ? '' : 'none';
-          });
-        });
+          // Methods to Pass collapsible
+          const methodsBtn = document.createElement('button');
+          methodsBtn.type = 'button';
+          methodsBtn.className = 'collapsible';
+          methodsBtn.textContent = 'Methods to Pass';
+          card.appendChild(methodsBtn);
 
-      } catch (err) {
-        console.error("Error loading teachers.json:", err);
-        container.innerHTML = "<p style='text-align: center; color: #e74c3c; font-weight: 500;'>Could not load teacher data. Please try again later.</p>";
-      }
-    }
-
-    loadTeachers();
-  </script>
-</body>
-</html>
+          const methodsContent = document.createElement('div');
+          methodsContent.className = '
