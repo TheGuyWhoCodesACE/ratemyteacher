@@ -33,20 +33,22 @@
       "Spend a lot of time on ur essay and go to office hours"
     ]
   },
-  "Mr Shelton (Religious Studies Ii Sacred Text)": {
-    "response_count": 1,
+  "Mr Shelton (Religious Studies 2 Sacred Text)": {
+    "response_count": 2,
     "averages": {
-      "difficulty": 1.0,
+      "difficulty": 3.0,
       "enjoyment": 5.0,
       "strictness": 1.0
     },
     "would_take_again_percent_yes": 100.0,
     "average_grade": "A",
     "comments": [
-      "ez pz"
+      "ez pz",
+      "Mr. Shelton is the GOAT"
     ],
     "methods_to_pass": [
-      "clash royale (im deadass)"
+      "clash royale (im deadass)",
+      "If u genuinely need help passing his class, I think u need to drop out atp"
     ]
   },
   "Mr Anderson (Honors English 1)": {
@@ -81,7 +83,7 @@
       "when doing hw, CHECK ANSWERS, and if u get smth wrong or don’t understand it, FIGURE OUT why u got it wrong/the concept"
     ]
   },
-  "Mrs Mrnell (Geometry)": {
+  "Mrs Marnell (Geometry)": {
     "response_count": 1,
     "averages": {
       "difficulty": 2.0,
@@ -111,22 +113,6 @@
       "DO WELL ON HW, and u can tank literally anything bc of extra credit."
     ]
   },
-  "Mr Shelton ()": {
-    "response_count": 1,
-    "averages": {
-      "difficulty": 5.0,
-      "enjoyment": 5.0,
-      "strictness": 1.0
-    },
-    "would_take_again_percent_yes": 100.0,
-    "average_grade": "A",
-    "comments": [
-      "Mr. Shelton is the GOAT"
-    ],
-    "methods_to_pass": [
-      "If u genuinely need help passing his class, I think u need to drop out atp"
-    ]
-  },
   "Mr Van Bomel (World History Honors)": {
     "response_count": 1,
     "averages": {
@@ -143,7 +129,7 @@
       "U can literally miss all of class, and just study the review sheet in ur own, and get an A on the final"
     ]
   },
-  "Mrs Davison (Stem)": {
+  "Mrs Davison (Freshman Stem)": {
     "response_count": 1,
     "averages": {
       "difficulty": 2.0,
@@ -186,5 +172,47 @@
     "methods_to_pass": [
       "Ask friends for help if u are confused"
     ]
+  },
+  "Mr Thompson (Fundamentals Of Art)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 1.0,
+      "enjoyment": 4.0,
+      "strictness": 4.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
+    "comments": [],
+    "methods_to_pass": [
+      "Try not to get distracted during class"
+    ]
+  },
+  "Profe Diaz (Spanish 2)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 4.0,
+      "enjoyment": 1.0,
+      "strictness": 3.0
+    },
+    "would_take_again_percent_yes": 0.0,
+    "average_grade": "A",
+    "comments": [
+      "There is a lot of memorization"
+    ],
+    "methods_to_pass": [
+      "Find a way that works for u to study vocab"
+    ]
+  },
+  "Senor Orozoco (Spanish 1)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 4.0,
+      "enjoyment": 1.0,
+      "strictness": 4.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
+    "comments": [],
+    "methods_to_pass": []
   }
 }
