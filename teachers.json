@@ -16,22 +16,24 @@
     ]
   },
   "Ms Stevenson (Honors English 2)": {
-    "response_count": 2,
+    "response_count": 3,
     "averages": {
-      "difficulty": 5.0,
-      "enjoyment": 2.5,
-      "strictness": 4.0
+      "difficulty": 4.67,
+      "enjoyment": 2.67,
+      "strictness": 4.33
     },
-    "would_take_again_percent_yes": 0.0,
-    "average_grade": "C+",
+    "would_take_again_percent_yes": 33.3,
+    "average_grade": "B-",
     "comments": [
-      "Good teacher, but extremely difficult class. Very harsh essay grading."
+      "Good teacher, but extremely difficult class. Very harsh essay grading.",
+      "First semester there is like no homework, but the median essay grade on the first 2 essays was like a 60"
     ],
     "methods_to_pass": [
-      "Go to office hours."
+      "Go to office hours.",
+      "Spend a lot of time on ur essay and go to office hours"
     ]
   },
-  "Mr Shelton (Religious Studies 2 Sacred Text)": {
+  "Mr Shelton (Religious Studies Ii Sacred Text)": {
     "response_count": 1,
     "averages": {
       "difficulty": 1.0,
@@ -46,6 +48,143 @@
     "methods_to_pass": [
       "clash royale (im deadass)"
     ]
+  },
+  "Mr Anderson (Honors English 1)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 3.0,
+      "enjoyment": 2.0,
+      "strictness": 4.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
+    "comments": [
+      "Don’t play video games"
+    ],
+    "methods_to_pass": [
+      "Actually read and do the work"
+    ]
+  },
+  "Mr Hirsch (Algebra 2 Trigonometry Honors)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 5.0,
+      "enjoyment": 1.0,
+      "strictness": 4.0
+    },
+    "would_take_again_percent_yes": 0.0,
+    "average_grade": "A-",
+    "comments": [
+      "There is a lot of hw, only take if you know you are good at algebra."
+    ],
+    "methods_to_pass": [
+      "when doing hw, CHECK ANSWERS, and if u get smth wrong or don’t understand it, FIGURE OUT why u got it wrong/the concept"
+    ]
+  },
+  "Mrs Mrnell (Geometry)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 2.0,
+      "enjoyment": 4.0,
+      "strictness": 3.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
+    "comments": [],
+    "methods_to_pass": [
+      "Do the hw and make sure u get the right answers. Other than that its rlly easy to do well"
+    ]
+  },
+  "Br John (Religious Studies 1)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 1.0,
+      "enjoyment": 4.0,
+      "strictness": 2.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
+    "comments": [
+      "he gives a lot of extra credit"
+    ],
+    "methods_to_pass": [
+      "DO WELL ON HW, and u can tank literally anything bc of extra credit."
+    ]
+  },
+  "Mr Shelton ()": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 5.0,
+      "enjoyment": 5.0,
+      "strictness": 1.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
+    "comments": [
+      "Mr. Shelton is the GOAT"
+    ],
+    "methods_to_pass": [
+      "If u genuinely need help passing his class, I think u need to drop out atp"
+    ]
+  },
+  "Mr Van Bomel (World History Honors)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 1.0,
+      "enjoyment": 5.0,
+      "strictness": 1.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
+    "comments": [
+      "Mr. Van Bomel is one of the best teachers at dls"
+    ],
+    "methods_to_pass": [
+      "U can literally miss all of class, and just study the review sheet in ur own, and get an A on the final"
+    ]
+  },
+  "Mrs Davison (Stem)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 2.0,
+      "enjoyment": 4.0,
+      "strictness": 1.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
+    "comments": [],
+    "methods_to_pass": [
+      "Take notes, and actually study for tests"
+    ]
+  },
+  "Mr Padia (Ap Bio)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 5.0,
+      "enjoyment": 1.0,
+      "strictness": 1.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
+    "comments": [
+      "Content is hard. Only take if you actually like science."
+    ],
+    "methods_to_pass": [
+      "Study a lot, find what works best for you."
+    ]
+  },
+  "Mr Bedford (Introduction To Computer Science)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 1.0,
+      "enjoyment": 5.0,
+      "strictness": 3.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
+    "comments": [],
+    "methods_to_pass": [
+      "Ask friends for help if u are confused"
+    ]
   }
-
 }
