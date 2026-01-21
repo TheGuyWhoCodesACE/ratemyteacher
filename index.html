@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rate My Teachers</title>
   <style>
+    /* General Page */
     body {
       font-family: Arial, sans-serif;
       background: #f4f6f8;
@@ -18,14 +19,13 @@
       color: #2c3e50;
     }
 
-    /* Main two-column layout */
+    /* Main 2-column layout */
     .main-container {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
     }
 
-    /* Left column: teacher profiles */
     .left-column {
       flex: 2;
       min-width: 300px;
@@ -34,7 +34,6 @@
       gap: 20px;
     }
 
-    /* Right column: form */
     .right-column {
       flex: 1;
       min-width: 300px;
@@ -52,7 +51,7 @@
       border-radius: 10px;
     }
 
-    /* Teacher cards */
+    /* Teacher card */
     .teacher-card {
       background: #fff;
       border-radius: 10px;
@@ -75,33 +74,84 @@
       margin-right: 10px;
     }
 
-    .section {
-      margin-top: 10px;
+    /* Rating sliders */
+    .rating-container {
+      margin: 10px 0;
     }
 
-    .section h3 {
-      margin: 10px 0 5px 0;
-      font-size: 1rem;
+    .rating-label {
+      font-size: 0.9rem;
+      margin-bottom: 3px;
       color: #2c3e50;
     }
 
-    ul {
-      padding-left: 20px;
-      margin: 5px 0;
-    }
-
     .rating-bar {
-      height: 10px;
+      height: 15px;
       background: #ddd;
-      border-radius: 5px;
-      margin-top: 3px;
-      margin-bottom: 10px;
+      border-radius: 7.5px;
       overflow: hidden;
+      position: relative;
     }
 
     .rating-fill {
       height: 100%;
-      background: #3498db;
+      width: 0;
+      background: linear-gradient(90deg, #2ecc71, #f1c40f, #e74c3c);
+      border-radius: 7.5px;
+      transition: width 1s ease-out;
+    }
+
+    .rating-value {
+      position: absolute;
+      right: 10px;
+      top: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #fff;
+      font-weight: bold;
+      text-shadow: 0 0 2px #000;
+    }
+
+    /* Collapsible Sections */
+    .collapsible {
+      background-color: #3498db;
+      color: white;
+      cursor: pointer;
+      padding: 8px 15px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 0.9rem;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .collapsible:after {
+      content: '\002B';
+      float: right;
+      margin-left: 5px;
+    }
+
+    .collapsible.active:after {
+      content: "\2212";
+    }
+
+    .content {
+      padding: 0 15px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background: #ecf0f1;
+      border-radius: 5px;
+      margin-top: 5px;
+    }
+
+    .content ul {
+      padding-left: 20px;
+      margin: 5px 0;
     }
 
     @media (max-width: 900px) {
@@ -109,10 +159,10 @@
         flex-direction: column;
       }
     }
+
   </style>
 </head>
 <body>
-
   <h1>Rate My Teachers</h1>
 
   <div class="main-container">
@@ -121,8 +171,8 @@
 
     <!-- Right: Google Form -->
     <div class="right-column">
-      <h2>Rate One of Your Teachers</h2>
-      <iframe src="https://forms.gle/6s6sqWbQY7VrVfeT9"></iframe>
+      <h2>Submit a Review</h2>
+      <iframe src="YOUR_GOOGLE_FORM_LINK_HERE"></iframe>
     </div>
   </div>
 
@@ -140,33 +190,41 @@
           card.innerHTML = `
             <h2>${name}</h2>
             <p><span class="stat">Responses:</span> ${info.response_count}</p>
-            
-            <div class="section">
-              <h3>Averages</h3>
-              <p>Difficulty: ${info.averages.difficulty}</p>
-              <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.difficulty/5)*100}%"></div></div>
-              
-              <p>Enjoyment: ${info.averages.enjoyment}</p>
-              <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.enjoyment/5)*100}%"></div></div>
-              
-              <p>Strictness: ${info.averages.strictness}</p>
-              <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.strictness/5)*100}%"></div></div>
-              
-              <p><span class="stat">% Would take again:</span> ${info.would_take_again_percent_yes}%</p>
+            <p><span class="stat">% Would take again:</span> ${info.would_take_again_percent_yes}%</p>
+
+            <div class="rating-container">
+              <div class="rating-label">Difficulty</div>
+              <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.difficulty/5)*100}%"></div><div class="rating-value">${info.averages.difficulty} / 5</div></div>
+
+              <div class="rating-label">Enjoyment</div>
+              <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.enjoyment/5)*100}%"></div><div class="rating-value">${info.averages.enjoyment} / 5</div></div>
+
+              <div class="rating-label">Strictness</div>
+              <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.strictness/5)*100}%"></div><div class="rating-value">${info.averages.strictness} / 5</div></div>
             </div>
 
-            <div class="section">
-              <h3>Comments</h3>
-              <ul>${info.comments.map(c => `<li>${c}</li>`).join('')}</ul>
-            </div>
+            <button type="button" class="collapsible">Comments</button>
+            <div class="content"><ul>${info.comments.map(c => `<li>${c}</li>`).join('')}</ul></div>
 
-            <div class="section">
-              <h3>Methods to Pass</h3>
-              <ul>${info.methods_to_pass.map(m => `<li>${m}</li>`).join('')}</ul>
-            </div>
+            <button type="button" class="collapsible">Methods to Pass</button>
+            <div class="content"><ul>${info.methods_to_pass.map(m => `<li>${m}</li>`).join('')}</ul></div>
           `;
 
           container.appendChild(card);
+        }
+
+        // Collapsible functionality
+        const coll = document.getElementsByClassName("collapsible");
+        for (let i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            const content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+              content.style.maxHeight = null;
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+            }
+          });
         }
 
       } catch (err) {
@@ -180,5 +238,3 @@
 
 </body>
 </html>
-
-
