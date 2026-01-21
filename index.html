@@ -8,13 +8,20 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="dlslogo.png">
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
   <style>
     /* Body */
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
       margin: 0;
       padding: 0;
+      color: #333;
     }
 
     /* Top Bar */
@@ -22,246 +29,355 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background-color: #B2FBA5;
-      padding: 10px 20px;
+      background: linear-gradient(90deg, #2c3e50 0%, #34495e 100%);
+      padding: 15px 30px;
       color: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       position: sticky;
       top: 0;
       z-index: 100;
+      border-bottom: 3px solid #1abc9c;
     }
 
     .top-bar .logo {
-      height: 40px;
+      height: 50px;
       width: auto;
       border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .top-bar .logo:hover {
+      transform: scale(1.05);
     }
 
     .top-bar h1 {
       margin: 0;
-      font-size: 1.4rem;
+      font-size: 1.8rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
       text-align: center;
       flex: 1;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
     .search-container {
       position: relative;
-      width: 200px;
+      width: 250px;
     }
 
     .search-container input {
       width: 100%;
-      padding: 6px 30px 6px 10px;
-      border-radius: 20px;
+      padding: 10px 40px 10px 15px;
+      border-radius: 25px;
       border: none;
       outline: none;
-      font-size: 0.9rem;
+      font-size: 1rem;
+      background: rgba(255,255,255,0.9);
+      color: #333;
+      transition: box-shadow 0.3s ease;
     }
 
-    .search-container img {
+    .search-container input:focus {
+      box-shadow: 0 0 10px rgba(26,188,156,0.5);
+    }
+
+    .search-container .fa-search {
       position: absolute;
-      right: 8px;
+      right: 15px;
       top: 50%;
       transform: translateY(-50%);
-      height: 16px;
-      width: 16px;
-      opacity: 0.6;
+      color: #7f8c8d;
+      font-size: 1.2rem;
     }
 
     /* Main 2-column layout */
     .main-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
-      padding: 20px;
+      gap: 30px;
+      padding: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
     }
 
     /* Left column: vertical scrollable list */
     .left-column {
       flex: 2;
-      min-width: 300px;
+      min-width: 320px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      max-height: calc(100vh - 80px);
+      gap: 25px;
+      max-height: calc(100vh - 120px);
       overflow-y: auto;
-      padding-right: 5px;
+      padding-right: 10px;
     }
 
     /* Scrollbar style */
     .left-column::-webkit-scrollbar {
-      width: 8px;
+      width: 10px;
     }
     .left-column::-webkit-scrollbar-track {
-      background: #f4f6f8;
-      border-radius: 4px;
+      background: #ecf0f1;
+      border-radius: 5px;
     }
     .left-column::-webkit-scrollbar-thumb {
-      background-color: #2c3e50;
-      border-radius: 4px;
+      background: linear-gradient(180deg, #1abc9c, #16a085);
+      border-radius: 5px;
     }
 
     /* Right column */
     .right-column {
       flex: 1;
-      min-width: 300px;
+      min-width: 320px;
       background: #fff;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      max-height: calc(100vh - 80px);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      max-height: calc(100vh - 120px);
       overflow-y: auto;
+      border: 1px solid #ecf0f1;
+    }
+
+    .right-column h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      text-align: center;
     }
 
     iframe {
       width: 100%;
-      height: 600px;
+      height: 650px;
       border: none;
       border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
     /* Teacher card */
     .teacher-card {
       background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 20px;
-      transition: transform 0.2s;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      padding: 25px;
+      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
+      border: 1px solid #ecf0f1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .teacher-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #1abc9c, #16a085);
     }
 
     .teacher-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
     }
 
     .teacher-card h2 {
-      margin-top: 10px;
-      color: #34495e;
+      margin: 15px 0 10px;
+      color: #2c3e50;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
       text-align: center;
+      font-size: 1.4rem;
+    }
+
+    .teacher-card p {
+      margin: 5px 0;
+      font-size: 1rem;
+      color: #555;
     }
 
     .stat {
-      font-weight: bold;
-      margin-right: 10px;
+      font-weight: 600;
+      color: #1abc9c;
     }
 
     .teacher-image {
       width: 100%;
       height: auto;
-      max-height: 200px;
-      border-radius: 10px;
-      margin-bottom: 10px;
+      max-height: 220px;
+      border-radius: 12px;
+      margin-bottom: 15px;
       display: block;
-      object-fit: contain;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     /* Rating sliders */
     .rating-container {
       width: 100%;
-      margin: 10px 0;
+      margin: 15px 0;
     }
 
     .rating-label {
-      font-size: 0.9rem;
-      margin-bottom: 3px;
+      font-size: 1rem;
+      margin-bottom: 5px;
       color: #2c3e50;
+      font-weight: 500;
     }
 
     .rating-bar {
-      height: 15px;
-      background: #ddd;
-      border-radius: 7.5px;
+      height: 20px;
+      background: #ecf0f1;
+      border-radius: 10px;
       overflow: hidden;
       position: relative;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .rating-fill {
       height: 100%;
       width: 0;
-      background: linear-gradient(90deg, #2ecc71, #f1c40f, #e74c3c);
-      border-radius: 7.5px;
-      transition: width 1s ease-out;
+      background: linear-gradient(90deg, #e74c3c, #f39c12, #2ecc71);
+      border-radius: 10px;
+      transition: width 1.2s ease-out;
     }
 
     .rating-value {
       position: absolute;
-      right: 10px;
+      right: 12px;
       top: 0;
       height: 100%;
       display: flex;
       align-items: center;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       color: #fff;
-      font-weight: bold;
-      text-shadow: 0 0 2px #000;
+      font-weight: 600;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
     }
 
     /* Average grade display */
     .average-grade {
-      font-size: 1.1rem;
-      font-weight: bold;
+      font-size: 1.2rem;
+      font-weight: 700;
       color: #e67e22;
-      margin-top: 8px;
+      margin-top: 10px;
       text-align: center;
+      background: #fff3cd;
+      padding: 8px 15px;
+      border-radius: 20px;
+      border: 1px solid #ffeaa7;
     }
 
     /* Collapsible Sections */
     .collapsible {
-      background-color: #3498db;
+      background: linear-gradient(90deg, #3498db, #2980b9);
       color: white;
       cursor: pointer;
-      padding: 8px 15px;
+      padding: 12px 20px;
       width: 100%;
       border: none;
       text-align: left;
       outline: none;
-      font-size: 0.9rem;
-      border-radius: 5px;
-      margin-top: 10px;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 8px;
+      margin-top: 15px;
+      transition: background 0.3s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .collapsible:after {
-      content: '\002B';
-      float: right;
-      margin-left: 5px;
+    .collapsible:hover {
+      background: linear-gradient(90deg, #2980b9, #21618c);
     }
 
-    .collapsible.active:after {
-      content: "\2212";
+    .collapsible::after {
+      content: '\f107'; /* Font Awesome chevron-down */
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      transition: transform 0.3s ease;
+    }
+
+    .collapsible.active::after {
+      transform: rotate(180deg);
     }
 
     .content {
-      padding: 0 15px;
+      padding: 0 20px;
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease-out;
-      background: #ecf0f1;
-      border-radius: 5px;
-      margin-top: 5px;
+      transition: max-height 0.4s ease-out;
+      background: #f8f9fa;
+      border-radius: 8px;
+      margin-top: 8px;
       width: 100%;
+      border: 1px solid #e9ecef;
     }
 
     .content ul {
-      padding-left: 20px;
-      margin: 5px 0;
+      padding-left: 25px;
+      margin: 10px 0;
+      list-style-type: disc;
+    }
+
+    .content li {
+      margin-bottom: 5px;
+      color: #495057;
+    }
+
+    /* Loading Spinner */
+    .loading {
+      text-align: center;
+      padding: 50px;
+      font-size: 1.2rem;
+      color: #7f8c8d;
+    }
+
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #1abc9c;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     /* Responsive */
     @media (max-width: 900px) {
       .main-container {
         flex-direction: column;
+        padding: 20px;
       }
       .search-container {
         width: 100%;
-        margin-top: 10px;
+        margin-top: 15px;
+      }
+      .top-bar {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+      }
+      .top-bar h1 {
+        margin: 10px 0;
       }
       .left-column, .right-column {
         max-height: none;
         overflow: visible;
+      }
+      .teacher-card {
+        padding: 20px;
       }
     }
   </style>
@@ -273,14 +389,19 @@
     <h1>De La Salle - Rate My Teacher</h1>
     <div class="search-container">
       <input type="text" id="searchInput" placeholder="Search teachers...">
-      <img src="searchicon.png" alt="Search">
+      <i class="fas fa-search"></i>
     </div>
   </div>
 
   <!-- Main layout -->
   <div class="main-container">
     <!-- Left: Teacher profiles -->
-    <div class="left-column" id="teacherContainer"></div>
+    <div class="left-column" id="teacherContainer">
+      <div class="loading">
+        <div class="spinner"></div>
+        Loading teachers...
+      </div>
+    </div>
 
     <!-- Right: Google Form -->
     <div class="right-column">
@@ -291,10 +412,15 @@
 
   <script>
     async function loadTeachers() {
+      const container = document.getElementById('teacherContainer');
+      const loading = container.querySelector('.loading');
+
       try {
         const res = await fetch('teachers.json');
         const data = await res.json();
-        const container = document.getElementById('teacherContainer');
+
+        // Remove loading
+        container.innerHTML = '';
 
         for (const [name, info] of Object.entries(data)) {
           // Only teacher name for image
@@ -317,7 +443,7 @@
           card.className = 'teacher-card';
 
           card.innerHTML = `
-            <img src="${imageSrc}" alt="${name}" class="teacher-image">
+            <img src="${imageSrc}" alt="${name}" class="teacher-image" loading="lazy">
             <h2>${name}</h2>
             <p><span class="stat">Responses:</span> ${info.response_count}</p>
             <p><span class="stat">% Would take again:</span> ${info.would_take_again_percent_yes}%</p>
@@ -335,10 +461,10 @@
 
             <div class="average-grade">Average Grade: ${info.average_grade}</div>
 
-            <button type="button" class="collapsible">Comments</button>
+            <button type="button" class="collapsible">Comments <i class="fas fa-chevron-down"></i></button>
             <div class="content"><ul>${info.comments.map(c => `<li>${c}</li>`).join('')}</ul></div>
 
-            <button type="button" class="collapsible">Methods to Pass</button>
+            <button type="button" class="collapsible">Methods to Pass <i class="fas fa-chevron-down"></i></button>
             <div class="content"><ul>${info.methods_to_pass.map(m => `<li>${m}</li>`).join('')}</ul></div>
           `;
 
@@ -372,7 +498,7 @@
 
       } catch (err) {
         console.error("Error loading teachers.json:", err);
-        document.getElementById('teacherContainer').innerHTML = "<p>Could not load teacher data.</p>";
+        container.innerHTML = "<p style='text-align: center; color: #e74c3c; font-weight: 500;'>Could not load teacher data. Please try again later.</p>";
       }
     }
 
@@ -380,5 +506,3 @@
   </script>
 </body>
 </html>
-
-
