@@ -69,6 +69,7 @@
     .teacher-card h2 {
       margin-top: 10px;
       color: #34495e;
+      text-align: center;
     }
 
     .stat {
@@ -76,16 +77,15 @@
       margin-right: 10px;
     }
 
-  .teacher-image {
-    width: 100%;          /* full width of the card */
-    height: auto;         /* height adjusts automatically to preserve aspect ratio */
-    max-height: 200px;    /* optional: max height so huge images don’t dominate */
-    border-radius: 10px;
-    margin-bottom: 10px;
-    display: block;
-    object-fit: contain;  /* ensures full image fits without cropping */
-  }
-
+    .teacher-image {
+      width: 100%;          
+      height: auto;         
+      max-height: 200px;    
+      border-radius: 10px;
+      margin-bottom: 10px;
+      display: block;
+      object-fit: contain;  
+    }
 
     /* Rating sliders */
     .rating-container {
@@ -105,6 +105,7 @@
       border-radius: 7.5px;
       overflow: hidden;
       position: relative;
+      margin-bottom: 8px;
     }
 
     .rating-fill {
@@ -126,6 +127,15 @@
       color: #fff;
       font-weight: bold;
       text-shadow: 0 0 2px #000;
+    }
+
+    /* Average grade display */
+    .average-grade {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #e67e22;
+      margin-top: 8px;
+      text-align: center;
     }
 
     /* Collapsible Sections */
@@ -199,15 +209,14 @@
 
         for (const [name, info] of Object.entries(data)) {
 
-          // Normalize name for image lookup
-          const normalizedName = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+          // Use only teacher name for image (ignore class)
+          const baseName = name.split("(")[0].trim().toLowerCase().replace(/[^a-z0-9]/g, '');
           const imageExtensions = ['png', 'jpg', 'jpeg', 'webp'];
           let imageSrc = 'placeholder.png'; // default image
 
-          // Check if the image exists
           for (const ext of imageExtensions) {
             try {
-              const testSrc = `${normalizedName}.${ext}`;
+              const testSrc = `${baseName}.${ext}`;
               const res = await fetch(testSrc, { method: 'HEAD' });
               if (res.ok) {
                 imageSrc = testSrc;
@@ -235,6 +244,8 @@
               <div class="rating-label">Strictness</div>
               <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.strictness/5)*100}%"></div><div class="rating-value">${info.averages.strictness} / 5</div></div>
             </div>
+
+            <div class="average-grade">Average Grade: ${info.average_grade}</div>
 
             <button type="button" class="collapsible">Comments</button>
             <div class="content"><ul>${info.comments.map(c => `<li>${c}</li>`).join('')}</ul></div>
@@ -270,5 +281,3 @@
   </script>
 </body>
 </html>
-
-
