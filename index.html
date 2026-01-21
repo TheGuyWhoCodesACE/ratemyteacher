@@ -226,6 +226,19 @@
       border: 1px solid #a8e6cf;
     }
 
+    /* Responses badge */
+    .responses-badge {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #3498db;
+      margin: 5px 0;
+      text-align: center;
+      background: #ecf0f1;
+      padding: 4px 10px;
+      border-radius: 12px;
+      border: 1px solid #bdc3c7;
+    }
+
     /* Collapsible Sections */
     .collapsible {
       background-color: #3498db;
@@ -338,6 +351,7 @@
           card.innerHTML = `
             <img src="${imageSrc}" alt="${name}" class="teacher-image">
             <h2>${name}</h2>
+            <div class="responses-badge">${info.response_count} responses</div>
             <div class="would-take-badge">${info.would_take_again_percent_yes}% would take again</div>
 
             <div class="rating-container">
