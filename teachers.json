@@ -1,17 +1,18 @@
 {
-  "Mr Norris": {
+  "Mr Norris (Religion)": {
     "response_count": 1,
     "averages": {
-      "difficulty": 2.0,
-      "enjoyment": 1.0,
+      "difficulty": 1.0,
+      "enjoyment": 2.0,
       "strictness": 1.0
     },
     "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
     "comments": [
-      "The class is really boring, however decently easy if you manage to pay attention."
+      "It's a pretty boring class at times, however tests are pretty easy."
     ],
     "methods_to_pass": [
-      "He checks if you're wearing a collared shirt so don't try to get by him if you have his class."
+      "He checks your collar and will send you to the Deans if you don't have a collared shirt."
     ]
   }
 }
