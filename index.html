@@ -461,10 +461,10 @@
 
             <div class="average-grade">Average Grade: ${info.average_grade}</div>
 
-            <button type="button" class="collapsible">Comments <i class="fas fa-chevron-down"></i></button>
+            <button type="button" class="collapsible">Comments</button>
             <div class="content"><ul>${info.comments.map(c => `<li>${c}</li>`).join('')}</ul></div>
 
-            <button type="button" class="collapsible">Methods to Pass <i class="fas fa-chevron-down"></i></button>
+            <button type="button" class="collapsible">Methods to Pass</button>
             <div class="content"><ul>${info.methods_to_pass.map(m => `<li>${m}</li>`).join('')}</ul></div>
           `;
 
