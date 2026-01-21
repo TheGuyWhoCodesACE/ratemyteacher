@@ -361,4 +361,56 @@
               <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.difficulty/5)*100}%"></div><div class="rating-value">${info.averages.difficulty} / 5</div></div>
 
               <div class="rating-label">Enjoyment</div>
-              <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.enjoyment/5)*100}%"></div><div class="rating-value">${info.averages.enjoyment} / 5</div></div
+              <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.enjoyment/5)*100}%"></div><div class="rating-value">${info.averages.enjoyment} / 5</div></div>
+
+              <div class="rating-label">Strictness</div>
+              <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.strictness/5)*100}%"></div><div class="rating-value">${info.averages.strictness} / 5</div></div>
+            </div>
+
+            <div class="average-grade">Average Grade: ${info.average_grade}</div>
+
+            <button type="button" class="collapsible">Comments</button>
+            <div class="content"><ul>${info.comments.map(c => `<li>${c}</li>`).join('')}</ul></div>
+
+            <button type="button" class="collapsible">Methods to Pass</button>
+            <div class="content"><ul>${info.methods_to_pass.map(m => `<li>${m}</li>`).join('')}</ul></div>
+          `;
+
+          container.appendChild(card);
+        }
+
+        // Collapsible functionality
+        const coll = document.getElementsByClassName("collapsible");
+        for (let i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            const content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+              content.style.maxHeight = null;
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+            }
+          });
+        }
+
+        // Search filter
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', () => {
+          const query = searchInput.value.toLowerCase();
+          const cards = container.getElementsByClassName('teacher-card');
+          Array.from(cards).forEach(card => {
+            const name = card.querySelector('h2').textContent.toLowerCase();
+            card.style.display = name.includes(query) ? '' : 'none';
+          });
+        });
+
+      } catch (err) {
+        console.error("Error loading teachers.json:", err);
+        document.getElementById('teacherContainer').innerHTML = "<p>Could not load teacher data.</p>";
+      }
+    }
+
+    loadTeachers();
+  </script>
+</body>
+</html>
