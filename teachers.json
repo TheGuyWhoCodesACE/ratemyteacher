@@ -73,19 +73,22 @@
     ]
   },
   "Mr Hirsch (Algebra 2 W Trig H)": {
-    "response_count": 1,
+    "response_count": 3,
     "averages": {
-      "difficulty": 5.0,
-      "enjoyment": 1.0,
+      "difficulty": 4.67,
+      "enjoyment": 2.33,
       "strictness": 4.0
     },
-    "would_take_again_percent_yes": 0.0,
-    "average_grade": "A-",
+    "would_take_again_percent_yes": 33.3,
+    "average_grade": "C+",
     "comments": [
-      "There is a lot of hw, only take if you know you are good at algebra."
+      "There is a lot of hw, only take if you know you are good at algebra.",
+      "If u stay in 100% locked in during class(Not that hard with hirsch cuz he keeps you engaged) then you shouldn’t have to study too much besides doing homework which takes around 1.5 to 2 hours.",
+      "Literally do not ever even think abt taking this fuck ass class"
     ],
     "methods_to_pass": [
-      "when doing hw, CHECK ANSWERS, and if u get smth wrong or don’t understand it, FIGURE OUT why u got it wrong/the concept"
+      "when doing hw, CHECK ANSWERS, and if u get smth wrong or don’t understand it, FIGURE OUT why u got it wrong/the concept",
+      "You are not passing. Just give up"
     ]
   },
   "Mrs Marnell (Geometry)": {
@@ -298,20 +301,6 @@
       "DO the homework"
     ]
   },
-  "Algebra 2 W Trig H (Algebra 2 W Trig H)": {
-    "response_count": 1,
-    "averages": {
-      "difficulty": 4.0,
-      "enjoyment": 5.0,
-      "strictness": 3.0
-    },
-    "would_take_again_percent_yes": 100.0,
-    "average_grade": "A",
-    "comments": [
-      "If u stay in 100% locked in during class(Not that hard with hirsch cuz he keeps you engaged) then you shouldn’t have to study too much besides doing homework which takes around 1.5 to 2 hours."
-    ],
-    "methods_to_pass": []
-  },
   "Mrs Lamble (World History Honors)": {
     "response_count": 1,
     "averages": {
@@ -413,21 +402,5 @@
     "average_grade": "A",
     "comments": [],
     "methods_to_pass": []
-  },
-  "Mr Hirsch (Algebra 2 Trig Honors)": {
-    "response_count": 1,
-    "averages": {
-      "difficulty": 5.0,
-      "enjoyment": 1.0,
-      "strictness": 5.0
-    },
-    "would_take_again_percent_yes": 0.0,
-    "average_grade": "F",
-    "comments": [
-      "Literally do not ever even think abt taking this fuck ass class"
-    ],
-    "methods_to_pass": [
-      "You are not passing. Just give up"
-    ]
   }
 }
