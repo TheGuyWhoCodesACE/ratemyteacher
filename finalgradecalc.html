@@ -1,43 +1,146 @@
-// Fun messages
-let message = "";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Grade Calculator</title>
+<link rel="icon" type="image/png" href="dlslogo.png">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #e6f2e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .calculator-container {
+    background-color: #f0fff0;
+    border: 2px solid #4CAF50;
+    border-radius: 15px;
+    padding: 30px 40px;
+    width: 350px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    text-align: center;
+  }
+  h1 {
+    color: #2e7d32;
+    margin-bottom: 25px;
+  }
+  input[type=number] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    font-size: 1rem;
+    text-align: center;
+  }
+  input.error {
+    border-color: red;
+    color: red;
+  }
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 15px;
+    width: 100%;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
+  #result {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #1b5e20;
+  }
+</style>
+</head>
+<body>
+<div class="calculator-container">
+  <h1>Final Grade Calculator</h1>
+  <input type="number" id="current" placeholder="Current grade (%)">
+  <input type="number" id="finalworth" placeholder="Final worth (%)">
+  <input type="number" id="desired" placeholder="Desired grade (%)">
+  <button onclick="calculateFinal()">Calculate my final grade</button>
+  <div id="result"></div>
+</div>
 
-if (required > 100) {
-  message = randomMessage([
-    "GG's",
-    "😱 It's literally impossible, hopefully your teacher gives extra credit",
-    "You're cooked"
-  ]);
-} else if (required >= 95) {
-  message = randomMessage([
-    "No more reels brodie, lock in!"
-  ]);
-} else if (required >= 80 && required < 95) {
-  message = randomMessage([
-    "I'd check the study guide but it could be worse!"
-  ]);
-} else if (required > 69 && required < 80) {
-  message = randomMessage([
-    "Light work, just lock in"
-  ]);
-} else if (required === 69) {
-  message = randomMessage([
-    "heh funny number, Nice"
-  ]);
-} else if (required > 0 && required < 69) {
-  message = randomMessage([
-    "Yeah, ur chillin"
-  ]);
-} else if (required <= 0) {
-  message = randomMessage([
-    "🎉 Do you even have to show up?",
-    "😁 You should draw in the essay section lol",
-    "Show up late, do anything, it does not matter."
-  ]);
-} else {
-  message = randomMessage([
-    "👍 Achievable! You got this!",
-    "😊 Totally doable with some effort, go crush it!",
-    "🏆 Keep calm and study on! Success is near.",
-    "😎 Easy peasy! Just don't forget to show up."
-  ]);
+<script>
+function randomMessage(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
 }
+
+function calculateFinal() {
+  const current = parseFloat(document.getElementById('current').value);
+  const finalworth = parseFloat(document.getElementById('finalworth').value);
+  const desired = parseFloat(document.getElementById('desired').value);
+  const inputs = [document.getElementById('current'), document.getElementById('finalworth'), document.getElementById('desired')];
+
+  let error = false;
+  inputs.forEach(input => input.classList.remove('error'));
+  if (isNaN(current) || current < 0 || current > 100) { document.getElementById('current').classList.add('error'); error = true; }
+  if (isNaN(finalworth) || finalworth <= 0 || finalworth > 100) { document.getElementById('finalworth').classList.add('error'); error = true; }
+  if (isNaN(desired) || desired < 0 || desired > 100) { document.getElementById('desired').classList.add('error'); error = true; }
+  if (error) { document.getElementById('result').innerHTML = "Please fix the red fields!"; return; }
+
+  const required = ((desired - current*(1 - finalworth/100)) / (finalworth/100)).toFixed(1);
+  let message = "";
+  if(required > 100) {
+    message = randomMessage([
+      "GG's",
+      "You're cooked, bro...",
+      "Time to beg the teacher for mercy."
+    ]);
+  } else if(required >= 95) {
+    message = randomMessage([
+      "No more reels brodie, lock in!",
+      "Sweaty grind time, but maybe doable?",
+      "Better start praying..."
+    ]);
+  } else if(required >= 80 && required < 95) {
+    message = randomMessage([
+      "I'd check the study guide but it could be worse!",
+      "Decent effort needed, go crush it!",
+      "You got this if you pay attention!"
+    ]);
+  } else if(required > 69 && required < 80) {
+    message = randomMessage([
+      "Light work, just lock in",
+      "You're cruising, easy effort",
+      "Not bad, just review a bit!"
+    ]);
+  } else if(required === 69) {
+    message = randomMessage([
+      "Heh funny number, nice 😏",
+    ]);
+  } else if(required > 0 && required < 69) {
+    message = randomMessage([
+      "Yeah ur chillin 😎",
+      "Pretty much free points, relax",
+      "Low key an easy day, enjoy it"
+    ]);
+  } else if(required <= 0) {
+    message = randomMessage([
+      "Do you even have to show up lol",
+      "you could sleep through it, it's fine",
+      "Show up late, it doesn't matter"
+    ]);
+  } else {
+    message = randomMessage([
+      "sum' light"
+    ]);
+  }
+
+  document.getElementById('result').innerHTML = `You need <strong>${required}%</strong> on the final.<br>${message}`;
+}
+</script>
+</body>
+</html>
