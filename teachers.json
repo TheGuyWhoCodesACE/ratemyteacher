@@ -54,11 +54,11 @@
     ]
   },
   "Mr Anderson (Honors English 1)": {
-    "response_count": 2,
+    "response_count": 4,
     "averages": {
-      "difficulty": 3.0,
-      "enjoyment": 3.0,
-      "strictness": 3.5
+      "difficulty": 2.75,
+      "enjoyment": 3.75,
+      "strictness": 3.25
     },
     "would_take_again_percent_yes": 100.0,
     "average_grade": "B+",
@@ -68,10 +68,11 @@
     ],
     "methods_to_pass": [
       "Actually read and do the work",
-      "Just pay attention to what he talks about in class."
+      "Just pay attention to what he talks about in class.",
+      "Go in for extra essay help if you are not 100% confidant in your essay."
     ]
   },
-  "Mr Hirsch (Algebra 2 Trigonometry Honors)": {
+  "Mr Hirsch (Algebra 2 W Trig H)": {
     "response_count": 1,
     "averages": {
       "difficulty": 5.0,
@@ -102,10 +103,10 @@
     ]
   },
   "Br John (Religious Studies 1)": {
-    "response_count": 1,
+    "response_count": 2,
     "averages": {
       "difficulty": 1.0,
-      "enjoyment": 4.0,
+      "enjoyment": 4.5,
       "strictness": 2.0
     },
     "would_take_again_percent_yes": 100.0,
@@ -114,7 +115,8 @@
       "he gives a lot of extra credit"
     ],
     "methods_to_pass": [
-      "DO WELL ON HW, and u can tank literally anything bc of extra credit."
+      "DO WELL ON HW, and u can tank literally anything bc of extra credit.",
+      "Do every assignment for extra points, so that when a test or assignment comes along that you don't do as good on, you have considerable cushioning."
     ]
   },
   "Mr Van Bomel (World History)": {
@@ -278,6 +280,154 @@
     ],
     "methods_to_pass": [
       "Put effort into what you do"
+    ]
+  },
+  "Mr Pelosi (Geometry)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 3.0,
+      "enjoyment": 5.0,
+      "strictness": 2.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A-",
+    "comments": [
+      "Mr. Pelosi is a funny teacher who take his job seriously"
+    ],
+    "methods_to_pass": [
+      "DO the homework"
+    ]
+  },
+  "Algebra 2 W Trig H (Algebra 2 W Trig H)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 4.0,
+      "enjoyment": 5.0,
+      "strictness": 3.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
+    "comments": [
+      "If u stay in 100% locked in during class(Not that hard with hirsch cuz he keeps you engaged) then you shouldn’t have to study too much besides doing homework which takes around 1.5 to 2 hours."
+    ],
+    "methods_to_pass": []
+  },
+  "Mrs Lamble (World History Honors)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 4.0,
+      "enjoyment": 5.0,
+      "strictness": 4.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "B+",
+    "comments": [
+      "Packets of homework."
+    ],
+    "methods_to_pass": []
+  },
+  "Mr Colon (Band)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 2.0,
+      "enjoyment": 1.0,
+      "strictness": 2.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
+    "comments": [],
+    "methods_to_pass": [
+      "Show up"
+    ]
+  },
+  "Br John (Religion 1)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 3.0,
+      "enjoyment": 5.0,
+      "strictness": 2.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
+    "comments": [],
+    "methods_to_pass": [
+      "Do homework"
+    ]
+  },
+  "Mr Macarthur (Health)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 1.0,
+      "enjoyment": 4.0,
+      "strictness": 3.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A-",
+    "comments": [],
+    "methods_to_pass": []
+  },
+  "Mr Pelosi (Honors Geometry)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 3.0,
+      "enjoyment": 3.0,
+      "strictness": 2.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A-",
+    "comments": [],
+    "methods_to_pass": []
+  },
+  "Mrs Thomas (Freshman Stem)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 1.0,
+      "enjoyment": 3.0,
+      "strictness": 2.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
+    "comments": [],
+    "methods_to_pass": []
+  },
+  "Mr Curry (World History)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 2.0,
+      "enjoyment": 4.0,
+      "strictness": 1.0
+    },
+    "would_take_again_percent_yes": 100.0,
+    "average_grade": "A",
+    "comments": [],
+    "methods_to_pass": []
+  },
+  "Mr Marchesci (Latin 1)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 4.0,
+      "enjoyment": 1.0,
+      "strictness": 3.0
+    },
+    "would_take_again_percent_yes": 0.0,
+    "average_grade": "A",
+    "comments": [],
+    "methods_to_pass": []
+  },
+  "Mr Hirsch (Algebra 2 Trig Honors)": {
+    "response_count": 1,
+    "averages": {
+      "difficulty": 5.0,
+      "enjoyment": 1.0,
+      "strictness": 5.0
+    },
+    "would_take_again_percent_yes": 0.0,
+    "average_grade": "F",
+    "comments": [
+      "Literally do not ever even think abt taking this fuck ass class"
+    ],
+    "methods_to_pass": [
+      "You are not passing. Just give up"
     ]
   }
 }
