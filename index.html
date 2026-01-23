@@ -326,7 +326,7 @@
   <script>
     async function loadTeachers() {
       try {
-        const res = await fetch('teachers.json');
+        const res = await fetch('cleanteachers.json');
         const data = await res.json();
         const container = document.getElementById('teacherContainer');
 
@@ -405,7 +405,7 @@
         });
 
       } catch (err) {
-        console.error("Error loading teachers.json:", err);
+        console.error("Error loading cleanteachers.json:", err);
         document.getElementById('teacherContainer').innerHTML = "<p>Could not load teacher data.</p>";
       }
     }
@@ -414,3 +414,4 @@
   </script>
 </body>
 </html>
+
