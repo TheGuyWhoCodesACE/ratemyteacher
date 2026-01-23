@@ -1,201 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Final Grade Calculator</title>
-  <link rel="icon" type="image/png" href="dlslogo.png">
-  <style>
-    /* Body */
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+// Fun messages
+let message = "";
 
-    /* Calculator Container */
-    .calculator-container {
-      background: #e9f7ef;
-      border: 2px solid #145a32;
-      border-radius: 20px;
-      padding: 40px 30px;
-      width: 350px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      text-align: center;
-    }
-
-    .calculator-container h1 {
-      color: #0f3d2e;
-      margin-bottom: 30px;
-    }
-
-    /* Input Fields */
-    .calculator-container input[type="number"] {
-      width: 80%;
-      padding: 10px 12px;
-      margin: 10px 0 5px 0;
-      border-radius: 10px;
-      border: 1px solid #145a32;
-      font-size: 1rem;
-      outline: none;
-      transition: 0.3s;
-    }
-
-    .calculator-container input[type="number"].error {
-      border-color: red;
-      background: #ffd6d6;
-    }
-
-    .error-text {
-      color: red;
-      font-size: 0.85rem;
-      margin-bottom: 10px;
-      display: none;
-    }
-
-    /* Button */
-    .calculator-container button {
-      background-color: #145a32;
-      color: white;
-      padding: 12px 20px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-top: 10px;
-    }
-
-    .calculator-container button:hover {
-      background-color: #0f3d2e;
-    }
-
-    /* Result */
-    .result {
-      margin-top: 25px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: #0f3d2e;
-      background: #d1f2eb;
-      padding: 12px;
-      border-radius: 15px;
-      border: 1px solid #a3e4d7;
-    }
-
-    /* Message */
-    .message {
-      margin-top: 15px;
-      font-size: 1rem;
-      color: #145a32;
-    }
-  </style>
-</head>
-<body>
-  <div class="calculator-container">
-    <h1>Final Grade Calculator</h1>
-
-    <input type="number" id="currentGrade" placeholder="Current Grade (%)" min="0" max="100">
-    <div class="error-text" id="currentGradeError">Please enter a valid number 0-100!</div>
-
-    <input type="number" id="finalWorth" placeholder="Final Worth (%)" min="0" max="100">
-    <div class="error-text" id="finalWorthError">Please enter a valid number 1-100!</div>
-
-    <input type="number" id="desiredGrade" placeholder="Desired Grade (%)" min="0" max="100">
-    <div class="error-text" id="desiredGradeError">Please enter a valid number 0-100!</div>
-
-    <button onclick="calculateFinal()">Calculate My Final Grade</button>
-
-    <div class="result" id="result" style="display:none;"></div>
-    <div class="message" id="message"></div>
-  </div>
-
-  <script>
-    function randomMessage(messages) {
-      return messages[Math.floor(Math.random() * messages.length)];
-    }
-
-    function calculateFinal() {
-      const currentInput = document.getElementById('currentGrade');
-      const finalInput = document.getElementById('finalWorth');
-      const desiredInput = document.getElementById('desiredGrade');
-
-      const current = parseFloat(currentInput.value);
-      const finalWorth = parseFloat(finalInput.value);
-      const desired = parseFloat(desiredInput.value);
-
-      // Reset errors
-      [currentInput, finalInput, desiredInput].forEach(i => i.classList.remove('error'));
-      document.getElementById('currentGradeError').style.display = 'none';
-      document.getElementById('finalWorthError').style.display = 'none';
-      document.getElementById('desiredGradeError').style.display = 'none';
-
-      let hasError = false;
-
-      if(isNaN(current) || current < 0 || current > 100) {
-        currentInput.classList.add('error');
-        document.getElementById('currentGradeError').style.display = 'block';
-        hasError = true;
-      }
-      if(isNaN(finalWorth) || finalWorth <= 0 || finalWorth > 100) {
-        finalInput.classList.add('error');
-        document.getElementById('finalWorthError').style.display = 'block';
-        hasError = true;
-      }
-      if(isNaN(desired) || desired < 0 || desired > 100) {
-        desiredInput.classList.add('error');
-        document.getElementById('desiredGradeError').style.display = 'block';
-        hasError = true;
-      }
-
-      if(hasError) {
-        document.getElementById('result').style.display = 'none';
-        document.getElementById('message').textContent = '';
-        return;
-      }
-
-      const required = (desired - current*(1 - finalWorth/100)) / (finalWorth/100);
-
-      const resultDiv = document.getElementById('result');
-      const messageDiv = document.getElementById('message');
-
-      resultDiv.style.display = "block";
-      resultDiv.textContent = `You need to score ${required.toFixed(2)}% on your final.`;
-
-      // Fun messages
-      let message = "";
-      if(required > 100) {
-        message = randomMessage([
-          "🚨 Almost impossible! Maybe bribe the teacher? Just kidding…",
-          "😱 Yikes! That's higher than 100%! Time to clone yourself and study faster.",
-          "💀 Very unlikely! You might need a magical time turner for this one."
-        ]);
-      } else if(required > 85) {
-        message = randomMessage([
-          "💪 Challenging! Hit the books like a ninja.",
-          "😬 Tough but doable if you don't binge-watch TikTok for a week.",
-          "🔥 You better caffeinate and focus! The final is waiting..."
-        ]);
-      } else if(required < 0) {
-        message = randomMessage([
-          "🎉 Already achieved! You can nap and still pass.",
-          "😁 Relax, you've basically aced it already!",
-          "🍕 Congrats! Reward yourself now, you earned it."
-        ]);
-      } else {
-        message = randomMessage([
-          "👍 Achievable! You got this!",
-          "😊 Totally doable with some effort, go crush it!",
-          "🏆 Keep calm and study on! Success is near.",
-          "😎 Easy peasy! Just don't forget to show up."
-        ]);
-      }
-
-      messageDiv.textContent = message;
-    }
-  </script>
-</body>
-</html>
+if (required > 100) {
+  message = randomMessage([
+    "GG's",
+    "😱 It's literally impossible, hopefully your teacher gives extra credit",
+    "You're cooked"
+  ]);
+} else if (required >= 95) {
+  message = randomMessage([
+    "No more reels brodie, lock in!"
+  ]);
+} else if (required >= 80 && required < 95) {
+  message = randomMessage([
+    "I'd check the study guide but it could be worse!"
+  ]);
+} else if (required > 69 && required < 80) {
+  message = randomMessage([
+    "Light work, just lock in"
+  ]);
+} else if (required === 69) {
+  message = randomMessage([
+    "heh funny number, Nice"
+  ]);
+} else if (required > 0 && required < 69) {
+  message = randomMessage([
+    "Yeah, ur chillin"
+  ]);
+} else if (required <= 0) {
+  message = randomMessage([
+    "🎉 Do you even have to show up?",
+    "😁 You should draw in the essay section lol",
+    "Show up late, do anything, it does not matter."
+  ]);
+} else {
+  message = randomMessage([
+    "👍 Achievable! You got this!",
+    "😊 Totally doable with some effort, go crush it!",
+    "🏆 Keep calm and study on! Success is near.",
+    "😎 Easy peasy! Just don't forget to show up."
+  ]);
+}
