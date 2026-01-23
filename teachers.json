@@ -125,10 +125,10 @@
     ]
   },
   "Br John (Religious Studies 1)": {
-    "response_count": 2,
+    "response_count": 3,
     "averages": {
-      "difficulty": 1.0,
-      "enjoyment": 4.5,
+      "difficulty": 1.67,
+      "enjoyment": 4.67,
       "strictness": 2.0
     },
     "would_take_again_percent_yes": 100.0,
@@ -138,21 +138,8 @@
     ],
     "methods_to_pass": [
       "DO WELL ON HW, and u can tank literally anything bc of extra credit.",
+      "Do homework",
       "Do every assignment for extra points, so that when a test or assignment comes along that you don't do as good on, you have considerable cushioning."
-    ]
-  },
-  "Br John (Religion 1)": {
-    "response_count": 1,
-    "averages": {
-      "difficulty": 3.0,
-      "enjoyment": 5.0,
-      "strictness": 2.0
-    },
-    "would_take_again_percent_yes": 100.0,
-    "average_grade": "A",
-    "comments": [],
-    "methods_to_pass": [
-      "Do homework"
     ]
   },
   "Mrs Lamble (World History Honors)": {
@@ -232,9 +219,7 @@
     },
     "would_take_again_percent_yes": 0.0,
     "average_grade": "A-",
-    "comments": [
-      "Talks about her personal problems a lot"
-    ],
+    "comments": [],
     "methods_to_pass": []
   },
   "Mr Norris (Religion)": {
@@ -310,7 +295,7 @@
     "comments": [],
     "methods_to_pass": []
   },
-  "Mr Shelton (Religious Studies 2 Sacred Text)": {
+  "Mr Shelton (Religion)": {
     "response_count": 2,
     "averages": {
       "difficulty": 3.0,
@@ -374,7 +359,7 @@
       "Try not to get distracted during class"
     ]
   },
-  "Mr Thompson (Engineering And Fabrication 1)": {
+  "Mr Thompson (Engineering And Fabrication 1 And 2)": {
     "response_count": 1,
     "averages": {
       "difficulty": 2.0,
@@ -388,7 +373,7 @@
     ],
     "methods_to_pass": []
   },
-  "Mr Thompson (Sculpture 12)": {
+  "Mr Thompson (Sculpture 1 And 2)": {
     "response_count": 1,
     "averages": {
       "difficulty": 3.0,
