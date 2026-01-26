@@ -108,22 +108,24 @@
     ]
   },
   "Mr Hirsch (Algebra 2 W Trig H)": {
-    "response_count": 3,
+    "response_count": 4,
     "averages": {
-      "difficulty": 4.67,
-      "enjoyment": 2.33,
+      "difficulty": 4.25,
+      "enjoyment": 2.75,
       "strictness": 4.0
     },
-    "would_take_again_percent_yes": 33.3,
-    "average_grade": "C+",
+    "would_take_again_percent_yes": 50.0,
+    "average_grade": "B-",
     "comments": [
       "There is a lot of hw, only take if you know you are good at algebra.",
       "If u stay in 100% locked in during class(Not that hard with hirsch cuz he keeps you engaged) then you shouldn’t have to study too much besides doing homework which takes around 1.5 to 2 hours.",
-      "Literally do not ever even think abt taking this class"
+      "Literally do not ever even think abt taking this class",
+      "There is a ton of homework, I always split it with friends. He seems strict but is one of the best instructional teaches at dls and is hella funny. He has videos of lessons, before every test just watch all of them up to that point and you should be fine if you put in some time."
     ],
     "methods_to_pass": [
       "when doing hw, CHECK ANSWERS, and if u get smth wrong or don’t understand it, FIGURE OUT why u got it wrong/the concept",
-      "You are not passing. Just give up"
+      "You are not passing. Just give up",
+      "just watch the videos he posts."
     ]
   },
   "Br John (Religious Studies 1)": {
@@ -212,17 +214,21 @@
       "Do the hw and make sure u get the right answers. Other than that its rlly easy to do well"
     ]
   },
-  "Mrs Marnell (Ap Calc Ab)": {
-    "response_count": 1,
+  "Mrs Marnell (Ap Calc)": {
+    "response_count": 2,
     "averages": {
-      "difficulty": 4.0,
-      "enjoyment": 2.0,
+      "difficulty": 3.5,
+      "enjoyment": 2.5,
       "strictness": 2.0
     },
-    "would_take_again_percent_yes": 0.0,
+    "would_take_again_percent_yes": 50.0,
     "average_grade": "A-",
-    "comments": [],
-    "methods_to_pass": []
+    "comments": [
+      "Fun teacher, one of my favorites. Homework due every class, but this is just Math classes in general."
+    ],
+    "methods_to_pass": [
+      "Split homework with a partner"
+    ]
   },
   "Mr Norris (Religion)": {
     "response_count": 1,
