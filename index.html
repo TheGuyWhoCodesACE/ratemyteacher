@@ -1,103 +1,345 @@
-<script>
-async function loadTeachers() {
-  try {
-    const res = await fetch('teachers2.json');
-    const data = await res.json();
-    const container = document.getElementById('teacherContainer');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>De La Salle - Rate My Teacher</title>
 
-    for (const [teacherName, teacherInfo] of Object.entries(data)) {
-      const baseName = teacherName.toLowerCase().replace(/[^a-z0-9]/g, '');
-      const imageExtensions = ['png', 'jpg', 'jpeg', 'webp'];
-      let imageSrc = 'placeholder.png';
+  <link rel="icon" type="image/png" href="dlslogo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-      for (const ext of imageExtensions) {
-        try {
-          const testSrc = `${baseName}.${ext}`;
-          const r = await fetch(testSrc, { method: 'HEAD' });
-          if (r.ok) { imageSrc = testSrc; break; }
-        } catch {}
-      }
-
-      const card = document.createElement('div');
-      card.className = 'teacher-card';
-
-      let classesHTML = '';
-
-      for (const [className, info] of Object.entries(teacherInfo.classes)) {
-        classesHTML += `
-          <hr style="width:100%; margin:15px 0; border:0; border-top:1px solid #ccc;">
-          <h3 style="color:#145a32; text-align:center;">${className}</h3>
-
-          <div class="responses-badge">${info.response_count} responses</div>
-          <div class="would-take-badge">${info.would_take_again_percent_yes}% would take again</div>
-
-          <div class="rating-container">
-            <div class="rating-label">Difficulty</div>
-            <div class="rating-bar">
-              <div class="rating-fill" style="width:${(info.averages.difficulty/5)*100}%"></div>
-              <div class="rating-value">${info.averages.difficulty} / 5</div>
-            </div>
-
-            <div class="rating-label">Enjoyment</div>
-            <div class="rating-bar">
-              <div class="rating-fill" style="width:${(info.averages.enjoyment/5)*100}%"></div>
-              <div class="rating-value">${info.averages.enjoyment} / 5</div>
-            </div>
-
-            <div class="rating-label">Strictness</div>
-            <div class="rating-bar">
-              <div class="rating-fill" style="width:${(info.averages.strictness/5)*100}%"></div>
-              <div class="rating-value">${info.averages.strictness} / 5</div>
-            </div>
-          </div>
-
-          <div class="average-grade">Average Grade: ${info.average_grade}</div>
-
-          <button type="button" class="collapsible">Comments</button>
-          <div class="content">
-            <ul>${info.comments.map(c => `<li>${c}</li>`).join('')}</ul>
-          </div>
-
-          <button type="button" class="collapsible">Methods to Pass</button>
-          <div class="content">
-            <ul>${info.methods_to_pass.map(m => `<li>${m}</li>`).join('')}</ul>
-          </div>
-        `;
-      }
-
-      card.innerHTML = `
-        <img src="${imageSrc}" alt="${teacherName}" class="teacher-image">
-        <h2>${teacherName}</h2>
-        <div class="responses-badge">${teacherInfo.total_response_count} total responses</div>
-        ${classesHTML}
-      `;
-
-      container.appendChild(card);
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
     }
 
-    document.querySelectorAll(".collapsible").forEach(btn => {
-      btn.addEventListener("click", function () {
-        this.classList.toggle("active");
-        const content = this.nextElementSibling;
-        content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
-      });
-    });
+    .top-bar {
+      display: flex;
+      align-items: center;
+      background-color: #0f3d2e;
+      padding: 10px 20px;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
 
-    const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('input', () => {
-      const q = searchInput.value.toLowerCase();
-      document.querySelectorAll('.teacher-card').forEach(card => {
-        const name = card.querySelector('h2').textContent.toLowerCase();
-        card.style.display = name.includes(q) ? '' : 'none';
-      });
-    });
+    .top-bar .logo {
+      height: 40px;
+      border-radius: 8px;
+      margin-right: 15px;
+    }
 
-  } catch (err) {
-    console.error(err);
-    document.getElementById('teacherContainer').innerHTML =
-      "<p>Could not load teacher data.</p>";
+    .top-bar h1 {
+      flex: 1;
+      font-size: 1.4rem;
+      margin: 0;
+    }
+
+    .search-container {
+      position: relative;
+      width: 220px;
+    }
+
+    .search-container input {
+      width: 100%;
+      padding: 6px 35px 6px 10px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+    }
+
+    .search-container img {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 16px;
+      opacity: 0.6;
+    }
+
+    .main-container {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+
+    .left-column {
+      flex: 2;
+      min-width: 300px;
+      max-height: calc(100vh - 80px);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding-right: 5px;
+    }
+
+    .right-column {
+      flex: 1;
+      min-width: 300px;
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .teacher-card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .teacher-image {
+      width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .teacher-card h2 {
+      color: #145a32;
+      margin: 5px 0;
+      text-align: center;
+    }
+
+    .class-title {
+      margin-top: 15px;
+      color: #145a32;
+      text-align: center;
+    }
+
+    .responses-badge,
+    .would-take-badge,
+    .average-grade {
+      margin: 6px 0;
+      font-weight: bold;
+      text-align: center;
+      padding: 6px 12px;
+      border-radius: 15px;
+    }
+
+    .responses-badge {
+      background: #ecfdf5;
+      color: #145a32;
+      border: 1px solid #bdc3c7;
+    }
+
+    .would-take-badge {
+      background: #d1f2eb;
+      color: #0f5132;
+      border: 1px solid #a3e4d7;
+    }
+
+    .average-grade {
+      background: #e9f7ef;
+      color: #145a32;
+      border: 1px solid #a9dfbf;
+    }
+
+    .rating-container {
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    .rating-label {
+      font-size: 0.9rem;
+      color: #145a32;
+    }
+
+    .rating-bar {
+      height: 15px;
+      background: #ddd;
+      border-radius: 7px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    .rating-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #1e8449, #f1c40f, #c0392b);
+    }
+
+    .rating-value {
+      position: absolute;
+      right: 8px;
+      top: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      font-size: 0.75rem;
+      color: white;
+      font-weight: bold;
+      text-shadow: 0 0 2px black;
+    }
+
+    .collapsible {
+      background: #145a32;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 8px 15px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .collapsible::after {
+      content: "\f107";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+    }
+
+    .collapsible.active::after {
+      transform: rotate(180deg);
+    }
+
+    .content {
+      max-height: 0;
+      overflow: hidden;
+      background: #e9f7ef;
+      border-radius: 5px;
+      transition: max-height 0.3s ease;
+      width: 100%;
+      padding: 0 15px;
+    }
+
+    .content ul {
+      padding-left: 20px;
+      margin: 5px 0;
+    }
+
+    hr {
+      width: 100%;
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 15px 0;
+    }
+
+    @media (max-width: 900px) {
+      .main-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="top-bar">
+  <img src="dlslogo.png" class="logo">
+  <h1>De La Salle - Rate My Teacher</h1>
+  <div class="search-container">
+    <input id="searchInput" placeholder="Search teachers...">
+    <img src="searchicon.png">
+  </div>
+</div>
+
+<div class="main-container">
+  <div class="left-column" id="teacherContainer"></div>
+
+  <div class="right-column">
+    <h2>Rate Your Teacher</h2>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdkFKnHRI2u_nnsl9EGH1weXssEWO1PIRlF0YlBsRkClT24Rw/viewform?usp=dialog"></iframe>
+  </div>
+</div>
+
+<script>
+async function loadTeachers() {
+  const res = await fetch("teachers2.json");
+  const data = await res.json();
+  const container = document.getElementById("teacherContainer");
+
+  for (const [teacher, info] of Object.entries(data)) {
+    const base = teacher.toLowerCase().replace(/[^a-z0-9]/g, "");
+    let img = "placeholder.png";
+
+    for (const ext of ["png","jpg","jpeg","webp"]) {
+      try {
+        const r = await fetch(`${base}.${ext}`, { method: "HEAD" });
+        if (r.ok) { img = `${base}.${ext}`; break; }
+      } catch {}
+    }
+
+    const card = document.createElement("div");
+    card.className = "teacher-card";
+
+    let classesHTML = "";
+    for (const [cls, c] of Object.entries(info.classes)) {
+      classesHTML += `
+        <hr>
+        <h3 class="class-title">${cls}</h3>
+        <div class="responses-badge">${c.response_count} responses</div>
+        <div class="would-take-badge">${c.would_take_again_percent_yes}% would take again</div>
+
+        ${["difficulty","enjoyment","strictness"].map(k => `
+          <div class="rating-container">
+            <div class="rating-label">${k.charAt(0).toUpperCase()+k.slice(1)}</div>
+            <div class="rating-bar">
+              <div class="rating-fill" style="width:${(c.averages[k]/5)*100}%"></div>
+              <div class="rating-value">${c.averages[k]} / 5</div>
+            </div>
+          </div>
+        `).join("")}
+
+        <div class="average-grade">Average Grade: ${c.average_grade}</div>
+
+        <button class="collapsible">Comments</button>
+        <div class="content"><ul>${c.comments.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+
+        <button class="collapsible">Methods to Pass</button>
+        <div class="content"><ul>${c.methods_to_pass.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+      `;
+    }
+
+    card.innerHTML = `
+      <img src="${img}" class="teacher-image">
+      <h2>${teacher}</h2>
+      <div class="responses-badge">${info.total_response_count} total responses</div>
+      ${classesHTML}
+    `;
+
+    container.appendChild(card);
   }
+
+  document.querySelectorAll(".collapsible").forEach(b =>
+    b.onclick = () => {
+      b.classList.toggle("active");
+      const c = b.nextElementSibling;
+      c.style.maxHeight = c.style.maxHeight ? null : c.scrollHeight + "px";
+    }
+  );
+
+  document.getElementById("searchInput").oninput = e => {
+    const q = e.target.value.toLowerCase();
+    document.querySelectorAll(".teacher-card").forEach(card => {
+      card.style.display = card.innerText.toLowerCase().includes(q) ? "" : "none";
+    });
+  };
 }
 
 loadTeachers();
 </script>
+
+</body>
+</html>
