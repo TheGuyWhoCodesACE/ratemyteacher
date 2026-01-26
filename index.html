@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>De La Salle - Rate My Teacher</title>
-
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="dlslogo.png" />
-
-  <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  />
-
+  <link rel="icon" type="image/png" href="dlslogo.png">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    /* Body */
     body {
       font-family: Arial, sans-serif;
       background: #f4f6f8;
@@ -22,13 +17,15 @@
       padding: 0;
     }
 
+    /* Top Bar */
     .top-bar {
       display: flex;
       align-items: center;
-      background-color: #0f3d2e;
+      justify-content: flex-start;
+      background-color: #0f3d2e; /* Dark green */
       padding: 10px 20px;
       color: white;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -36,14 +33,15 @@
 
     .top-bar .logo {
       height: 40px;
+      width: auto;
       border-radius: 8px;
     }
 
     .top-bar h1 {
       margin: 0 20px 0 0;
       font-size: 1.4rem;
-      flex: 1;
       text-align: center;
+      flex: 1;
     }
 
     .search-container {
@@ -58,6 +56,7 @@
       border-radius: 20px;
       border: none;
       outline: none;
+      font-size: 0.9rem;
     }
 
     .search-container img {
@@ -66,30 +65,53 @@
       top: 50%;
       transform: translateY(-50%);
       height: 16px;
+      width: 16px;
       opacity: 0.6;
     }
 
+    /* Main 2-column layout */
     .main-container {
       display: flex;
+      flex-wrap: wrap;
       gap: 20px;
       padding: 20px;
     }
 
+    /* Left column: vertical scrollable list */
     .left-column {
       flex: 2;
+      min-width: 300px;
       display: flex;
       flex-direction: column;
       gap: 20px;
       max-height: calc(100vh - 80px);
       overflow-y: auto;
+      padding-right: 5px;
     }
 
+    /* Scrollbar style */
+    .left-column::-webkit-scrollbar {
+      width: 8px;
+    }
+    .left-column::-webkit-scrollbar-track {
+      background: #f4f6f8;
+      border-radius: 4px;
+    }
+    .left-column::-webkit-scrollbar-thumb {
+      background-color: #145a32; /* Green scrollbar */
+      border-radius: 4px;
+    }
+
+    /* Right column */
     .right-column {
       flex: 1;
+      min-width: 300px;
       background: #fff;
       border-radius: 10px;
       padding: 20px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-height: calc(100vh - 80px);
+      overflow-y: auto;
     }
 
     iframe {
@@ -99,15 +121,17 @@
       border-radius: 10px;
     }
 
+    /* Teacher card */
     .teacher-card {
       background: #fff;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       padding: 20px;
+      transition: transform 0.2s;
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: transform 0.2s;
+      width: 100%;
     }
 
     .teacher-card:hover {
@@ -115,19 +139,27 @@
     }
 
     .teacher-card h2 {
-      color: #145a32;
       margin-top: 10px;
+      color: #145a32; /* Dark green */
       text-align: center;
+    }
+
+    .stat {
+      font-weight: bold;
+      margin-right: 10px;
     }
 
     .teacher-image {
       width: 100%;
+      height: auto;
       max-height: 200px;
-      object-fit: contain;
       border-radius: 10px;
       margin-bottom: 10px;
+      display: block;
+      object-fit: contain;
     }
 
+    /* Rating sliders */
     .rating-container {
       width: 100%;
       margin: 10px 0;
@@ -135,13 +167,14 @@
 
     .rating-label {
       font-size: 0.9rem;
-      color: #145a32;
+      margin-bottom: 3px;
+      color: #145a32; /* Green */
     }
 
     .rating-bar {
       height: 15px;
       background: #ddd;
-      border-radius: 8px;
+      border-radius: 7.5px;
       overflow: hidden;
       position: relative;
       margin-bottom: 8px;
@@ -149,7 +182,9 @@
 
     .rating-fill {
       height: 100%;
+      width: 0;
       background: linear-gradient(90deg, #1e8449, #f1c40f, #c0392b);
+      border-radius: 7.5px;
       transition: width 1s ease-out;
     }
 
@@ -163,35 +198,71 @@
       font-size: 0.8rem;
       color: #fff;
       font-weight: bold;
+      text-shadow: 0 0 2px #000;
     }
 
+    /* Average grade display */
     .average-grade {
+      font-size: 1.1rem;
       font-weight: bold;
-      color: #145a32;
+      color: #145a32; /* Dark green */
+      margin-top: 8px;
+      text-align: center;
       background: #e9f7ef;
       padding: 8px 15px;
       border-radius: 20px;
-      margin-top: 8px;
+      border: 1px solid #a9dfbf;
     }
 
+    /* Would take again badge */
+    .would-take-badge {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #0f5132;
+      margin: 8px 0;
+      text-align: center;
+      background: #d1f2eb;
+      padding: 6px 12px;
+      border-radius: 15px;
+      border: 1px solid #a3e4d7;
+    }
+
+    /* Responses badge */
+    .responses-badge {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #145a32;
+      margin: 5px 0;
+      text-align: center;
+      background: #ecfdf5;
+      padding: 4px 10px;
+      border-radius: 12px;
+      border: 1px solid #bdc3c7;
+    }
+
+    /* Collapsible Sections */
     .collapsible {
-      background-color: #145a32;
+      background-color: #145a32; /* Dark green */
       color: white;
+      cursor: pointer;
       padding: 8px 15px;
       width: 100%;
       border: none;
+      text-align: left;
+      outline: none;
+      font-size: 0.9rem;
       border-radius: 5px;
       margin-top: 10px;
       display: flex;
       justify-content: space-between;
-      cursor: pointer;
+      align-items: center;
     }
 
     .collapsible::after {
-      content: "\f107";
-      font-family: "Font Awesome 6 Free";
+      content: '\f107';
+      font-family: 'Font Awesome 6 Free';
       font-weight: 900;
-      transition: transform 0.3s;
+      transition: transform 0.3s ease;
     }
 
     .collapsible.active::after {
@@ -199,118 +270,135 @@
     }
 
     .content {
+      padding: 0 15px;
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.3s ease-out;
       background: #e9f7ef;
       border-radius: 5px;
-      padding: 0 15px;
+      margin-top: 5px;
+      width: 100%;
     }
 
+    .content ul {
+      padding-left: 20px;
+      margin: 5px 0;
+    }
+
+    /* Responsive */
     @media (max-width: 900px) {
       .main-container {
         flex-direction: column;
       }
+      .search-container {
+        width: 100%;
+        margin-top: 10px;
+        margin-left: 0;
+      }
+      .left-column, .right-column {
+        max-height: none;
+        overflow: visible;
+      }
     }
   </style>
-
-  <script
-    src="https://cdn.counter.dev/script.js"
-    data-id="784d8b12-711f-4db8-9efe-a8fb8f5d4f76"
-    data-utcoffset="-7"
-  ></script>
 </head>
-
 <body>
+  <!-- Top Bar -->
   <div class="top-bar">
-    <img src="dlslogo.png" class="logo" />
+    <img src="dlslogo.png" alt="DLS Logo" class="logo">
     <h1>De La Salle - Rate My Teacher</h1>
     <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Search teachers..." />
-      <img src="searchicon.png" />
+      <input type="text" id="searchInput" placeholder="Search teachers...">
+      <img src="searchicon.png" alt="Search">
     </div>
   </div>
 
+  <!-- Main layout -->
   <div class="main-container">
+    <!-- Left: Teacher profiles -->
     <div class="left-column" id="teacherContainer"></div>
 
+    <!-- Right: Google Form -->
     <div class="right-column">
       <h2>Rate Your Teacher</h2>
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSdkFKnHRI2u_nnsl9EGH1weXssEWO1PIRlF0YlBsRkClT24Rw/viewform?usp=dialog"
-      ></iframe>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdkFKnHRI2u_nnsl9EGH1weXssEWO1PIRlF0YlBsRkClT24Rw/viewform?usp=dialog"></iframe>
     </div>
   </div>
 
   <script>
     async function loadTeachers() {
       try {
-        const res = await fetch("teachers.json");
+        const res = await fetch('teachers.json');
         const data = await res.json();
-        const container = document.getElementById("teacherContainer");
+        const container = document.getElementById('teacherContainer');
 
         for (const [name, info] of Object.entries(data)) {
-          const baseName = name
-            .split("(")[0]
-            .trim()
-            .toLowerCase()
-            .replace(/[^a-z0-9]/g, "");
+          const baseName = name.split("(")[0].trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+          const imageExtensions = ['png', 'jpg', 'jpeg', 'webp'];
+          let imageSrc = 'placeholder.png';
 
-          const extensions = ["png", "jpg", "jpeg", "webp"];
-          let imageSrc = "placeholder.png";
-
-          for (const ext of extensions) {
-            const testSrc = `${baseName}.${ext}`;
-            const head = await fetch(testSrc, { method: "HEAD" });
-            if (head.ok) {
-              imageSrc = testSrc;
-              break;
-            }
+          for (const ext of imageExtensions) {
+            try {
+              const testSrc = `${baseName}.${ext}`;
+              const res = await fetch(testSrc, { method: 'HEAD' });
+              if (res.ok) { imageSrc = testSrc; break; }
+            } catch(e) {}
           }
 
-          const card = document.createElement("div");
-          card.className = "teacher-card";
+          const card = document.createElement('div');
+          card.className = 'teacher-card';
+
           card.innerHTML = `
-            <img src="${imageSrc}" class="teacher-image" />
+            <img src="${imageSrc}" alt="${name}" class="teacher-image">
             <h2>${name}</h2>
+            <div class="responses-badge">${info.response_count} responses</div>
+            <div class="would-take-badge">${info.would_take_again_percent_yes}% would take again</div>
 
             <div class="rating-container">
               <div class="rating-label">Difficulty</div>
-              <div class="rating-bar">
-                <div class="rating-fill" style="width:${(info.averages.difficulty / 5) * 100}%"></div>
-                <div class="rating-value">${info.averages.difficulty}/5</div>
-              </div>
+              <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.difficulty/5)*100}%"></div><div class="rating-value">${info.averages.difficulty} / 5</div></div>
+
+              <div class="rating-label">Enjoyment</div>
+              <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.enjoyment/5)*100}%"></div><div class="rating-value">${info.averages.enjoyment} / 5</div></div>
+
+              <div class="rating-label">Strictness</div>
+              <div class="rating-bar"><div class="rating-fill" style="width:${(info.averages.strictness/5)*100}%"></div><div class="rating-value">${info.averages.strictness} / 5</div></div>
             </div>
 
-            <button class="collapsible">Comments</button>
-            <div class="content">
-              <ul>${info.comments.map(c => `<li>${c}</li>`).join("")}</ul>
-            </div>
+            <div class="average-grade">Average Grade: ${info.average_grade}</div>
+
+            <button type="button" class="collapsible">Comments</button>
+            <div class="content"><ul>${info.comments.map(c => `<li>${c}</li>`).join('')}</ul></div>
+
+            <button type="button" class="collapsible">Methods to Pass</button>
+            <div class="content"><ul>${info.methods_to_pass.map(m => `<li>${m}</li>`).join('')}</ul></div>
           `;
 
           container.appendChild(card);
         }
 
-        document.querySelectorAll(".collapsible").forEach(btn => {
-          btn.addEventListener("click", () => {
-            btn.classList.toggle("active");
-            const content = btn.nextElementSibling;
-            content.style.maxHeight = content.style.maxHeight
-              ? null
-              : content.scrollHeight + "px";
+        const coll = document.getElementsByClassName("collapsible");
+        for (let i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            const content = this.nextElementSibling;
+            content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
+          });
+        }
+
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', () => {
+          const query = searchInput.value.toLowerCase();
+          const cards = container.getElementsByClassName('teacher-card');
+          Array.from(cards).forEach(card => {
+            const name = card.querySelector('h2').textContent.toLowerCase();
+            card.style.display = name.includes(query) ? '' : 'none';
           });
         });
 
-        document.getElementById("searchInput").addEventListener("input", e => {
-          const q = e.target.value.toLowerCase();
-          document.querySelectorAll(".teacher-card").forEach(card => {
-            card.style.display = card.innerText.toLowerCase().includes(q)
-              ? ""
-              : "none";
-          });
-        });
       } catch (err) {
-        console.error(err);
+        console.error("Error loading teachers.json:", err);
+        document.getElementById('teacherContainer').innerHTML = "<p>Could not load teacher data.</p>";
       }
     }
 
